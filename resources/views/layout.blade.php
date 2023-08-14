@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GharJagga</title>
+    <title>GharJagga | Property As Your Options</title>
 </head>
 <body>
-    <h1>GharJagga</h1>
+    {{-- <h1>GharJagga | Property As Your Options</h1> --}}
     <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -38,7 +38,7 @@
     </head>
     <body class="mb-48">
         <nav class="flex justify-between items-center mb-4">
-            <a href="index.html"
+            <a href="/"
                 ><img class="w-24" src="{{asset('images/realestate3logo.png')}}" alt="" class="logo"
             /></a>
             <ul class="flex space-x-6 mr-6 text-lg">
