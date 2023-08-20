@@ -57,7 +57,7 @@
         </nav>
     {{-- view --}}
      <main> 
-        @yield('content')
+        {{$slot}}
      </main>
      {{--  --}}
      <footer
@@ -66,7 +66,7 @@
      <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
 
      <a
-         href="create.html"
+         href="/listings/create"
          class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
          >Post Your Listings</a
      >
