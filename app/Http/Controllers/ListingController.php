@@ -12,7 +12,7 @@ class ListingController extends Controller
     //all listings
 public function index(){
     return view('listings.index', [
-        'listings' => Listing::latest()->filter(request(['tag','search']))->get()
+        'listings' => Listing::latest()->filter(request(['tag','search']))->paginate(6)
     ]);
 }
  // single listings
@@ -31,8 +31,9 @@ public function index(){
     public function store(Request $request){
         // dd($request->all());
         
-
+       
         $formFields=$request->validate([
+            
             'title'=>'required',
             'property'=> ['required',Rule::unique('listings','property')],
             'location'=>'required',
@@ -41,6 +42,14 @@ public function index(){
             'tags'=> 'required',
             'description'=> 'required'
         ]);
-        return redirect('/');
+        // if the photo pf land has been uploaded then
+        if($request->hasFile('photo')){
+            $formFields['photo']=$request->file('photo')->store('photos','public');
+
+        }
+
+        Listing::create($formFields);
+        
+        return redirect('/')->with('message','Listing Posted sucessfully!');
     }
 }
