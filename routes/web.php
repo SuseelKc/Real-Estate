@@ -29,8 +29,6 @@ use App\Http\Controllers\ListingController;
 Route::get('/', [ListingController::class,'index']);
 
 
-
-
 // show create form
 Route::get('/listings/create',[ListingController::class,'create']);
 
@@ -38,6 +36,18 @@ Route::get('/listings/create',[ListingController::class,'create']);
 // store listings data
 Route::post('/listings', [ListingController::class, 'store'] );
 
+
+//show edit form
+Route::get('listings/{listing}/edit',[ListingController::class,'edit']);
+
+// edit submit to update
+Route::put('/listings/{listing}',[ListingController::class,'update']);
+
+// edit submit to update
+// Route::put('/listings/{listing}',[ListingController::class,'update']);
+
+// delete
+Route::delete('/listings/{listing}',[ListingController::class,'destroy']);
 
 // single listings
 Route::get('/listings/{listing}', [ListingController::class, 'show'] );

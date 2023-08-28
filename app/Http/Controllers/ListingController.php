@@ -39,7 +39,7 @@ public function index(){
             'location'=>'required',
             'website'=>'required',
             'email'=>['required','email'],
-            'tags'=> 'required',
+            'tags'=> 'required', 
             'description'=> 'required'
         ]);
         // if the photo pf land has been uploaded then
@@ -52,4 +52,43 @@ public function index(){
         
         return redirect('/')->with('message','Listing Posted sucessfully!');
     }
+
+    // edit
+    public function edit(Listing $listing){
+        // dd($listing);
+        return view('listings.edit',['listing'=>$listing]);
+    }
+
+    // update
+    public function update(Request $request,Listing $listing){
+        // dd($request->all());
+        
+       
+        $formFields=$request->validate([
+            
+            'title'=>'required',
+            'property'=> ['required'],
+            'location'=>'required',
+            'website'=>'required',
+            'email'=>['required','email'],
+            'tags'=> 'required', 
+            'description'=> 'required'
+        ]);
+        // if the photo pf land has been uploaded then
+        if($request->hasFile('photo')){
+            $formFields['photo']=$request->file('photo')->store('photos','public');
+
+        }
+
+        $listing->update($formFields);
+        
+        return back()->with('message','Listing Updated sucessfully!');
+    }
+
+    public function destroy(Listing $listing){
+        $listing->delete();
+        return redirect('/')->with('message',"Listing Deleted sucessfully!");
+
+    }
+    
 }
