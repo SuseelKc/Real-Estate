@@ -13,12 +13,15 @@
                 <p class="text-2xl text-gray-200 font-bold my-4">
                     Find or post your property
                 </p>
-                <div>
-                    <a
-                        href="register.html"
-                        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-                        >Sign Up to List Your Property</a
-                    >
-                </div>
+                @auth
+                @else
+                    <div>
+                        <a
+                            href="/login"
+                            class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+                            >Sign Up to List Your Property</a
+                        >
+                    </div>
+                @endauth    
             </div>
         </section>
