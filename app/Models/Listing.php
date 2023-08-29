@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Listing extends Model
 {
     use HasFactory;
 
     protected $fillable=['title','tags','property',
-    'location','email','website','description','photo'];
+    'location','email','website','description','photo','user_id'];
 
     public function scopeFilter($query,array $filters){
         if($filters['tag'] ?? false){
@@ -25,6 +26,11 @@ class Listing extends Model
         }
 
     }
-    
+    // creating relationships to users   
+    public function users(){
+
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }
  

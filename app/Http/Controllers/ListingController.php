@@ -48,6 +48,8 @@ public function index(){
 
         }
 
+        $formFields['user_id']=auth()->id();
+
         Listing::create($formFields);
         
         return redirect('/')->with('message','Listing Posted sucessfully!');
@@ -89,6 +91,12 @@ public function index(){
         $listing->delete();
         return redirect('/')->with('message',"Listing Deleted sucessfully!");
 
+    }
+
+    // manage
+    public function manage(){
+
+        return view('listings.manage',['listings'=>auth()->user()->listings()->get()]);
     }
     
 }
