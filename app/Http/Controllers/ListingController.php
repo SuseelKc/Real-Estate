@@ -65,7 +65,11 @@ public function index(){
     public function update(Request $request,Listing $listing){
         // dd($request->all());
         
-       
+        if($listing->user_id!= auth()->id()){
+            abort(403,'Unauthorized Action');
+        }
+
+
         $formFields=$request->validate([
             
             'title'=>'required',
@@ -88,6 +92,12 @@ public function index(){
     }
 
     public function destroy(Listing $listing){
+
+        
+        if($listing->user_id!= auth()->id()){
+            abort(403,'Unauthorized Action');
+        }
+        
         $listing->delete();
         return redirect('/')->with('message',"Listing Deleted sucessfully!");
 
