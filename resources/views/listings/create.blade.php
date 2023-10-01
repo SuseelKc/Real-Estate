@@ -57,8 +57,7 @@
 
                         <div class="mb-6">
                             <label for="email" class="inline-block text-lg mb-2"
-                                >Contact Email</label
-                            >
+                                >Contact Email</label>
                             <input
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
@@ -144,7 +143,7 @@
 
                         <div class="mb-6">
                             <button
-                                class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
+                                class="bg-blue-500 text-white rounded py-2 px-4 hover:bg-black"
                             >
                                 Post
                             </button>
